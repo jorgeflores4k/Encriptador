@@ -21,12 +21,12 @@
             <form>
                 
                 <div>
-                    <textarea name="" id="txtEncriptar" oninput="visualizar()" cols="70" rows="10" class="mensaje" placeholder="Ingrese el texto aquí"></textarea>
+                    <textarea name="" id="txtEncriptar" onchange="visualizar()" cols="70" rows="10" class="mensaje" placeholder="Ingrese el texto aquí"></textarea>
                 </div>
                 
 
                 <div class="zonaBaja">
-                    <label for="mensaje" class="aclaracion">Solo letras minusculas y sin acentos</label>
+                    <label for="mensaje" class="aclaracion">⚠ Solo letras minusculas y sin acentos</label>
 
                     
                     <input type="button" onclick="encriptar()" id="Encriptado" value="Encriptar" class="btnsEncriptado">
@@ -40,7 +40,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <textarea name="" id="respuesta" cols="70" rows="10" class="respuesta"></textarea>
+                        <textarea name="" id="respuesta" readonly="readonly" cols="70" rows="10" class="respuesta"></textarea>
                         
                         <input id="copiar" type="button" onclick="copiartexto()" value="Copiar" class="copiar">
 
@@ -68,7 +68,6 @@
 
                 function encriptar() {
                     visualizar();
-                    document.getElementById("respuesta").innerHTML = "";
                     var texto = document.getElementById("txtEncriptar").value;
                     var vocales = ['a', 'e', 'i', 'o', 'u'];
                     var codigo = ['ai', 'enter', 'imes', 'ober', 'ufat'];
@@ -90,7 +89,6 @@
 
                 function desencriptar() {
                     visualizar();
-                    document.getElementById("respuesta").innerHTML = "";
                     var texto = document.getElementById("txtEncriptar").value;
                     var vocales = ['a', 'e', 'i', 'o', 'u']
 
@@ -114,6 +112,8 @@
                     var comprobar = document.getElementById("txtEncriptar").value;
                     var res = document.getElementById("respuesta");
                     var copy = document.getElementById("copiar");
+
+                    document.getElementById("respuesta").innerHTML = "";
 
                     if(comprobar == ""){
                         document.getElementById("imagenPanel").disabled = false;

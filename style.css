@@ -115,3 +115,89 @@ body{
     font-size: 150%;
 
 }
+
+@media screen and (max-width: 480px){
+
+    .mensaje{
+        display: block;
+        width: 80%;
+        height: 70%;
+        border: none;
+    }
+
+    .zonaBaja{
+        position: absolute;
+        bottom: 33%;
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+    
+    }
+
+    .aclaracion{
+        margin: 5% 5% 0 10%;
+        font-size: 75%;
+    }
+
+    #Encriptado{
+        margin: 0 0 0 5%;
+    }
+    
+    .btnsEncriptado{
+        width: 40%;
+        padding: 15px 0;
+        margin: 15px;
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+    
+
+    .panel-body{
+        position: absolute;
+        border-radius: 25px;
+        right: 5%;
+        left: 5%;
+        top: 70%;
+        bottom: 20px;
+    }
+
+    .imagenPanel{
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        width: 30%;
+    }
+
+    .msjEncontrado{
+        position: absolute;
+        bottom: 25%;
+        left: 15%;
+        font-size: 100%;
+        font-weight: bold;
+    
+    }
+
+    .instrucciones{
+        position: absolute;
+        bottom: 3%;
+        left: 10%;
+        font-size: 75%;
+    
+    }
+
+    .respuesta{
+        position: absolute;
+        height: 55%;
+        font-size: 200%;
+        
+    }
+    
+    
+    .copiar{
+        position: absolute;
+        bottom: 0.1%;
+    }
+    
+}
