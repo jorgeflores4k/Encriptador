@@ -21,7 +21,7 @@
             <form>
                 
                 <div>
-                    <textarea name="" id="txtEncriptar" cols="70" rows="10" class="mensaje" placeholder="Ingrese el texto aquí"></textarea>
+                    <textarea name="" id="txtEncriptar" oninput="visualizar()" cols="70" rows="10" class="mensaje" placeholder="Ingrese el texto aquí"></textarea>
                 </div>
                 
 
@@ -67,6 +67,7 @@
                 }
 
                 function encriptar() {
+                    visualizar();
                     document.getElementById("respuesta").innerHTML = "";
                     var texto = document.getElementById("txtEncriptar").value;
                     var vocales = ['a', 'e', 'i', 'o', 'u'];
@@ -88,6 +89,7 @@
                 // texto a desencriptar
 
                 function desencriptar() {
+                    visualizar();
                     document.getElementById("respuesta").innerHTML = "";
                     var texto = document.getElementById("txtEncriptar").value;
                     var vocales = ['a', 'e', 'i', 'o', 'u']
@@ -108,16 +110,37 @@
 
                 }
 
-                var comprobar = document.getElementById("txtEncriptar").value;
-                var res = document.getElementById("respuesta");
-                var copy = document.getElementById("copiar");
+                function visualizar(){
+                    var comprobar = document.getElementById("txtEncriptar").value;
+                    var res = document.getElementById("respuesta");
+                    var copy = document.getElementById("copiar");
 
-                if(comprobar == ""){
-                    res.disabled = true;
-                    res.style.visibility = "hidden";
-                    copy.disabled = true;
-                    copy.style.visibility = "hidden";
-                }                
+                    if(comprobar == ""){
+                        document.getElementById("imagenPanel").disabled = false;
+                        document.getElementById("imagenPanel").style.visibility = "visible";
+                        document.getElementById("msjEncontrado").disabled = false;
+                        document.getElementById("msjEncontrado").style.visibility = "visible";
+                        document.getElementById("instrucciones").disabled = false;
+                        document.getElementById("instrucciones").style.visibility = "visible";
+                        res.disabled = true;
+                        res.style.visibility = "hidden";
+                        copy.disabled = true;
+                        copy.style.visibility = "hidden";
+                    } else{
+                        document.getElementById("imagenPanel").disabled = true;
+                        document.getElementById("imagenPanel").style.visibility = "hidden";
+                        document.getElementById("msjEncontrado").disabled = true;
+                        document.getElementById("msjEncontrado").style.visibility = "hidden";
+                        document.getElementById("instrucciones").disabled = true;
+                        document.getElementById("instrucciones").style.visibility = "hidden";
+                        res.disabled = false;
+                        res.style.visibility = "visible";
+                        copy.disabled = false;
+                        copy.style.visibility = "visible";
+                    }
+                }
+
+                visualizar(); 
                 
                 //texto = prompt("Ingrese su mensaje: ")
                 //encriptar(p1);
