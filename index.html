@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1><img src="imagenes/Logo.png" alt="Logotipo de Alura"></h1>
+            </div>
+
+        </header>
+
+        <main>
+
+            <form>
+                
+                <div>
+                    <textarea name="" id="txtEncriptar" cols="70" rows="10" class="mensaje" placeholder="Ingrese el texto aquí"></textarea>
+                </div>
+                
+
+                <div class="zonaBaja">
+                    <label for="mensaje" class="aclaracion">Solo letras minusculas y sin acentos</label>
+
+                    
+                    <input type="button" onclick="encriptar()" id="Encriptado" value="Encriptar" class="btnsEncriptado">
+                    <input type="button" onclick="desencriptar()" value="Desencriptar" class="btnsEncriptado">
+                </div>
+                
+
+            </form>
+
+            <aside>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <textarea name="" id="respuesta" cols="70" rows="10" class="respuesta"></textarea>
+                        
+                        <input id="copiar" type="button" onclick="copiartexto()" value="Copiar" class="copiar">
+
+                        <h2><img src="imagenes/Muñeco.png" alt="Imagen de busqueda" id="imagenPanel" class="imagenPanel"></h2>
+                        <label for="" id="msjEncontrado" class="msjEncontrado">Ningún mensaje fue encontrado</label>
+                        <label for="" id ="instrucciones" class="instrucciones">Ingresa el texto que desees encriptar o desencriptar</label>
+
+                    </div>
+                </div>
+
+
+
+            </aside>
+
+        </main>
+        <script>
+            	function saltarLinea() {
+                    document.write("<br><br>");
+                }
+
+                function imprimir(frase) {
+                    document.write(frase);
+                    saltarLinea();
+                }
+
+                function encriptar() {
+                    document.getElementById("respuesta").innerHTML = "";
+                    var texto = document.getElementById("txtEncriptar").value;
+                    var vocales = ['a', 'e', 'i', 'o', 'u'];
+                    var codigo = ['ai', 'enter', 'imes', 'ober', 'ufat'];
+                    var msj = Array.from(texto);
+
+                    for (var i = 0; i < msj.length; i++) {
+                        for (var j = 0; j < vocales.length; j++) {
+                            if (msj[i] == vocales[j]) {
+                                msj[i] = codigo[j]
+                            }
+                        }
+                    }
+                    msj = msj.toString().replace(/,/g, '')
+
+                    document.getElementById("respuesta").innerHTML = msj;
+                }
+
+                // texto a desencriptar
+
+                function desencriptar() {
+                    document.getElementById("respuesta").innerHTML = "";
+                    var texto = document.getElementById("txtEncriptar").value;
+                    var vocales = ['a', 'e', 'i', 'o', 'u']
+
+                    msj = texto.replace(/ai/g, vocales[0])
+                    .replace(/enter/g, vocales[1])
+                    .replace(/imes/g, vocales[2])
+                    .replace(/ober/g, vocales[3])
+                    .replace(/ufat/g, vocales[4]);
+
+                    document.getElementById("respuesta").innerHTML = msj;
+                }
+
+                function copiartexto(){
+                    var texto = document.getElementById('respuesta');
+                    texto.select();
+                    document.execCommand('copy');
+
+                }
+
+                var comprobar = document.getElementById("txtEncriptar").value;
+                var res = document.getElementById("respuesta");
+                var copy = document.getElementById("copiar");
+
+                if(comprobar == ""){
+                    res.disabled = true;
+                    res.style.visibility = "hidden";
+                    copy.disabled = true;
+                    copy.style.visibility = "hidden";
+                }                
+                
+                //texto = prompt("Ingrese su mensaje: ")
+                //encriptar(p1);
+                //desencriptar(texto);
+
+
+        </script>
+    </body>
+</html>
